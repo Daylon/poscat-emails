@@ -1,0 +1,35 @@
+
+<mj-table class="header-table header-table-upper">
+<tr class="header-tr">
+  <td class="header-td header-td-lower header-td-content">
+			<div class="mj-column header-column is-full-width header-column-block">
+				<table class="header-column-table header-column-table-3-cols">
+					<tr class="header-column-tr">
+					<!-- caret -->
+						<td class="header-column-table-td td-left">
+						{{#if _d.hasPlayPauseButton}}
+							<a href="\{{playpause.url}}">
+				 				<img alt="\{{playpause.alt}}" class="icon ui-icon icon-read" src="\{{urlAssets}}/\{{playpause.icon}}{{#if isDark}}--white{{/if}}.png"/>
+				 				<strong>\{{playpause.label}}</strong>
+				 			</a>
+				 		{{/if}}
+						</td>
+					<!-- logotype -->
+						<td class="header-column-table-td td-center">
+							<a href="\{{urlPoscat}}"><img alt="Poscat" title="Ouvrir Poscat dans le navigateur" class="icon ui-icon illus-logotype" src="\{{urlAssets}}/logotype_poscat@3x.png"/></a>
+						</td>
+					<!-- read it later -->
+						<td class="header-column-table-td td-right">
+						{{#if _d.canBeReadLater}}
+			 				<a href="\{{saveto.link}}">
+			 					<img alt="Sauvegarger ce fragment" class="icon ui-icon icon-pinned" src="\{{urlAssets}}/icon_unpinned@3x{{#if isDark}}--white{{/if}}.png"/>
+			 					<em>in</em>&thinsp;<strong>\{{saveto.name}}</strong>
+			 				</a>
+			 			{{/if}}
+						</td>
+					</tr>
+				</table>
+			</div>
+  </td>
+</tr>
+</mj-table>

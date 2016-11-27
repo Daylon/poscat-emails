@@ -1,0 +1,15 @@
+{{#if _d.canBeReadLater}}
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "EmailMessage",
+        "potentialAction": {
+            "@type": "ViewAction",
+            "name": "Lire dans \{{saveto.name}}",
+            "target": "\{{saveto.link}}",
+            "url": "\{{saveto.link}}"
+        },
+        "description": "\{{saveto.description}}"
+    }
+</script>
+{{/if}}

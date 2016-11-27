@@ -1,0 +1,17 @@
+{{#if _d.hasPrefooter}}
+<!-- main-lower-part -->
+<br>
+<div class="prefooter-content">
+	<center>
+		{{#if _d.isPrefooterALink}}
+			<a class="link" href="\{{prefooterLink}}">
+				\{{{prefooterMessage}}}
+			</a>
+		{{else}}
+			\{{{prefooterMessage}}}
+		{{/if}}
+	</center>
+</div>
+{{/if}}
+
+

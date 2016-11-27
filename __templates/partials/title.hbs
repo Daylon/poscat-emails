@@ -1,0 +1,18 @@
+{{#if _d.isDoubleTitle}}
+	<h2 class="is-heading--sub">\{{title.a}}</h2>&thinsp;
+	<h1 class="is-heading">\{{title.b}}</h1>
+	\{{#if title.c}}
+		<span class="is-heading--addendum">\{{title.c}}</span>
+	\{{/if}}
+{{else}}
+	{{#unless _d.hasCaret}}
+		<h1 class="is-heading">
+			\{{{title}}}
+		</h1>
+	{{else}}
+		<div class="is-heading">
+			<strong class="is-heading--caret">\{{caret}}</strong>
+			<span class="is-heading--worksize">&thinsp;/&thinsp;\{{size}}</span>
+		</div>
+	{{/unless}}
+{{/if}}

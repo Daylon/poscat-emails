@@ -1,0 +1,14 @@
+{{#if _d.extraFooter}}
+	<mj-table><tr><td>
+		<center>
+		<a class="link-{{_d.extraFooter.class}}" href="\{{urlExtraFooter}}">
+			<img class="ui-icon {{_d.extraFooter.class}}"
+				src="\{{urlAssets}}/{{_d.extraFooter.icon}}.png"/>
+			<span class="link-footer-extra">
+				\{{{labelExtraFooter}}}
+			</span>
+		</a>
+		</center>
+	</td></tr></mj-table>
+     <mj-spacer class="spacer-extra" />
+{{/if}}

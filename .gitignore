@@ -1,0 +1,6 @@
+node_modules
+.*.yml
+__templates/variants
+dist
+styles
+tests/fixtures

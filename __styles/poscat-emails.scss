@@ -1,0 +1,825 @@
+$gutter: 15px;
+$half-gutter: round( $gutter / 2 );
+$double-gutter: $gutter * 2;
+
+
+%font-regular{
+  font-family: 'Roboto', sans-serif;
+}
+
+%font-condensend{
+  font-family: 'Roboto Condensed', 'Roboto', sans-serif;
+}
+
+%font-texts{
+  font-family: 'Vollkorn', serif;
+}
+
+/* https://css-tricks.com/snippets/sass/advanced-type-checking/ */
+@function is-percentage($value) {
+  @return is-number($value) and unit($value) == '%';
+}
+
+/* https://css-tricks.com/snippets/sass/strip-unit-function/ */
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function get-overlayed-color( $color: white, $dosage: 90% ){
+  @return mix( $color, get-color( 'dark' ), $dosage );
+}
+
+$palette: ();
+
+@function get-color( $which-color: 'main' ){
+  @if $palette and map-has-key( $palette, $which-color ) {
+    @return map-get( $palette, $which-color );
+  }
+  @return #F710DF;
+}
+
+@mixin set-palette( $set: 'default' ){
+  $pal: ();
+  $commons: (
+  'brand': #FFD861
+  , 'neutral': #E7DFC6
+  , 'info': #6BD4F1
+  , 'asking': #5BC0BE
+  , 'success': #86DEB7
+  , 'warning': #FF9900
+  , 'error': #FF715B
+  , 'destructive': #BA7BA1
+  , 'dark': #393E41
+  , 'bright': #fff
+  , 'lightgrey': #f9f9f9
+  , 'darkgrey': lighten( #393E41, 5% )
+  );
+
+  @if not( $set ) or $set == 'default' {
+    $pal: (
+    'main': map-get( $commons, 'neutral' )
+    , 'front': map-get( $commons, 'bright' )
+    , 'background': map-get( $commons, 'dark' )
+    , 'cta-color': map-get( $commons, 'dark' )
+    );
+  } @else if $set == 'brand'{
+    $pal: (
+    'main': map-get( $commons, 'brand' )
+    , 'front': map-get( $commons, 'bright' )
+    , 'background': map-get( $commons, 'dark' )
+    , 'cta-color': map-get( $commons, 'dark' )
+    );
+  } @else if $set == 'warning'{
+    $pal: (
+    'main': map-get( $commons, 'warning' )
+    , 'front': map-get( $commons, 'bright' )
+    , 'background': map-get( $commons, 'dark' )
+    , 'cta-color': map-get( $commons, 'bright' )
+    );
+  } @else if $set == 'errored'{
+    $pal: (
+    'main': map-get( $commons, 'error' )
+    , 'front': map-get( $commons, 'bright' )
+    , 'background': map-get( $commons, 'dark' )
+    , 'cta-color': map-get( $commons, 'bright' )
+    );
+  } @else if $set == 'destructive'{
+    $pal: (
+    'main': map-get( $commons, 'destructive' )
+    , 'front': map-get( $commons, 'bright' )
+    , 'background': map-get( $commons, 'dark' )
+    , 'cta-color': map-get( $commons, 'bright' )
+    );
+  } @else if $set == 'info'{
+    $pal: (
+    'main': map-get( $commons, 'asking' )
+    , 'front': map-get( $commons, 'bright' )
+    , 'background': map-get( $commons, 'dark' )
+    , 'cta-color': map-get( $commons, 'bright' )
+    );
+  } @else if $set == 'success'{
+    $pal: (
+    'main': map-get( $commons, 'success' )
+    , 'front': map-get( $commons, 'bright' )
+    , 'background': map-get( $commons, 'dark' )
+    , 'cta-color': map-get( $commons, 'dark' )
+    );
+  } @else {
+    @warn '> $palette could not be defined. May output unexpected colors.'
+  }
+
+  $palette: map-merge( $commons, $pal ) !global;
+}
+
+@mixin make-cta( $cta-style-background: get-color(), $cta-style-border-color:  get-color(), $cta-style-color:  get-color() ){
+  .get-cta-block-size{
+    background-color: $cta-style-background;
+  }
+
+  .vml-get-cta-block-size{
+    strokecolor: $cta-style-border-color;
+
+    & > v, &-fill{
+      color: $cta-style-background;
+    }
+  }
+
+  .cta-block{
+    border: 1px solid $cta-style-border-color;
+  }
+
+  .cta-link{
+    &-label{
+      color: $cta-style-color;
+    }
+
+  }
+}
+
+@mixin set-colors( $pal: 'default' ){
+  @include set-palette( $pal );
+
+  mj-text, mj-list, mj-button, mj-table, .is-heading{
+    color: get-color( 'dark' );
+  }
+
+  a{
+    color: get-color( 'dark' );
+  }
+
+  &--dark{
+    a{
+      color: darken( get-color( 'bright' ), 15% );
+    }
+  }
+
+  @media all{
+
+    a{
+      &, &.link{
+        &,
+        &:link,
+        &:hover,
+        &:visited,
+        &:focus{
+          color: get-color( 'info' ) !important;
+        }
+
+        &:hover,
+        &:focus{
+          text-decoration: underline !important;
+        }
+      }
+    }
+  }
+
+  &.mj-container{
+    background-color: mix( get-color( 'main' ), get-color( 'bright' ), 20% )
+  }
+
+  .mj-column{
+    background-color: get-color( 'dark' );
+  }
+
+  .preheader{
+    &-column{
+      background-color: get-overlayed-color( get-color( 'main' ) );
+    }
+  }
+
+  .header{
+    &-column{
+      background-color: get-color( 'main' );
+    }
+  }
+
+  .fragment{
+    color: lighten( get-color( 'dark' ), 10% );
+  }
+
+  &--dark{
+
+    mj-text,
+    mj-list,
+    mj-button,
+    mj-table,
+    .is-heading,
+    .is-heading--sub,
+    .is-heading--addendum{
+      color: darken( get-color( 'bright' ), 10% );
+    }
+
+    $color-dark-bg: mix( get-color( 'main' ), get-color( 'dark' ), 40% );
+
+    &.mj-container{
+      background-color: $color-dark-bg;
+    }
+
+    .mj-column{
+      background-color: get-color( 'dark' );
+    }
+
+    .preheader-column{
+      background-color: mix( get-color( 'darkgrey' ), $color-dark-bg, 70% );
+
+      .as-header{
+        color: lighten( $color-dark-bg, 30% );
+      }
+    }
+
+    .header-column{
+      background-color: get-color( 'darkgrey' );
+    }
+
+    .fragment{
+      color: darken( get-color( 'bright' ), 20% );
+    }
+  }
+
+  .body{
+
+    &-column{
+
+      &-outer{
+        background-color: get-color( 'dark' );
+      }
+
+      &-inner, &-prefooter{
+        background-color: get-color( 'bright' );
+      }
+
+      &-footer{
+        background-color: get-color( 'dark' );
+
+        mj-text, mj-list, mj-button, mj-table{
+          color: get-color( 'main' );
+        }
+      }
+
+      &.header{
+        background-color: get-color( 'main' );
+      }
+
+    }
+
+    &-td, &-th{
+      &-upper{
+        background-color: get-color( 'main' );
+      }
+
+      &-lower{
+        padding-bottom: $double-gutter;
+        background-color: get-color( 'dark' );
+      }
+
+      &-content{
+        font-size: 12px;
+        background-color: get-color( 'bright' );
+      }
+    }
+  }
+
+  &--dark{
+    .body-td-upper{
+      background-color: get-color( 'darkgrey' );
+    }
+
+    .body-td-content{
+      background-color: get-color( 'dark' );
+
+      &.body-td-upper{
+        color: get-color( 'bright' );
+      }
+
+    }
+  }
+
+  .prefooter{
+    &-content{
+      font-style: italic;
+    }
+  }
+
+  .footer{
+    &-table{
+      width: 100%;
+    }
+
+    &-td{
+      width: 33%;
+      color: get-color( 'bright' );
+
+      &-left{
+        align: left;
+        text-align: left;
+      }
+
+      &-center{
+        align: center;
+        text-align: center;
+      }
+
+      &-right{
+        align: right;
+        text-align: right;
+      }
+    }
+  }
+
+  $cta-style-color: get-color( 'cta-color' );
+  $cta-style-background: get-color( 'main' );
+  $cta-style-border-color: get-color( 'main' );
+  @include make-cta( $cta-style-background, $cta-style-border-color, $cta-style-color );
+
+  &--dark{
+    $cta-style-color: get-color( 'main' );
+    $cta-style-background: lighten( get-color( 'dark' ), 5% );
+    $cta-style-border-color: get-color( 'main' );
+    @include make-cta( $cta-style-background, $cta-style-border-color, $cta-style-color );
+  }
+}
+
+/*
+MISC MIXINS
+*/
+
+@mixin table-padding( $value: 0 ){
+  padding: $value;
+  cellpadding: $value;
+}
+
+@mixin cta-border-radius( $target: 'cta', $width: 200px, $height: 40px, $radius: 3px ){
+  $arcValue: 0;
+  @if is-percentage( $radius ){
+    $arcValue: $radius;
+  } @else {
+    $arcValue: unquote( '#{round( 100 / strip-unit( $width ) * strip-unit( $radius ) )}%' );
+  }
+
+  .#{$target}, .vml-#{$target}{
+    width: $width;
+    height: $height;
+  }
+
+  .vml-#{$target}{
+    arcsize: $arcValue;
+  }
+
+  .#{$target}{
+    border-radius: $radius;
+  }
+}
+
+img{
+  border: 0;
+}
+
+a, a:link, a:visited, a:focus, a:active, a:hover{
+  text-decoration: none;
+}
+
+@media screen{
+  a.link:hover{
+    text-decoration: underline !important;
+  }
+}
+
+/*
+  COLOR PALETTES
+*/
+
+
+.as-sign-up{
+  @include set-colors( 'brand' );
+}
+
+.as-reading{
+  @include set-colors();
+}
+
+.as-warning{
+  @include set-colors( 'warning' );
+}
+
+.as-info, .as-faq, .as-interactive{
+  @include set-colors( 'info' );
+}
+
+.as-finished{
+  $palname: 'success' !global;
+  @include set-colors( 'success' );
+}
+
+.as-exit{
+  @include set-colors( 'errored' );
+}
+
+.as-closed-account{
+  @include set-colors( 'destructive' );
+}
+
+/*
+  /END OF PALETTES
+*/
+
+.link-footer{
+  & + &{
+    margin-left: 16px;
+  }
+}
+
+.as-vertically-centered{
+  valign: middle;
+  vertical-align: middle;
+}
+
+mj-text,
+mj-list,
+mj-button,
+mj-table,
+.is-heading,
+.is-heading--sub,
+.is-heading--addendum{
+  @extend %font-condensend;
+}
+
+.mj-container{
+  padding-top: $gutter;
+}
+
+.mj-section{
+  full-width: "full-width";
+  padding: 0;
+}
+
+.mj-column{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.mj-text{
+  padding: 0;
+}
+
+.is-full-width{
+  width: 100%;
+}
+
+.push{
+  &-column{
+    padding: 0;
+    mj-text{
+      font-size: 0;
+      line-height: 0;
+    }
+  }
+}
+
+.preheader{
+  &-column{
+    width: 100%;
+  }
+}
+
+.header, .main{
+  &-column{
+
+    &-block, &-table, &-tr, &-td{
+      height: 100px;
+    }
+
+    &-table{ // @include table-padding( value )
+      width: 100%;
+      align: center;
+
+      &-3-cols{
+        td{
+          width: 33%;
+        }
+      }
+
+      &-td{
+        text-align: center;
+        padding: $gutter 0;
+        valign: middle;
+        vertical-align: middle;
+
+        &.td-left{
+          text-align: left;
+          align: left;
+        }
+
+        &.td-center{
+          text-align: center;
+          align: center;
+        }
+
+        &.td-right{
+          text-align: right;
+          align: right;
+        }
+
+      }
+    }
+
+    strong{
+      @extend %font-regular;
+      font-weigh: 500;
+    }
+
+    em{
+      @extend %font-condensend;
+      font-weight: 300;
+    }
+
+  }
+
+}
+
+.as-header{
+  padding: ( $gutter / 10 ) $gutter;
+  font-size: 11px;
+  align: center;
+}
+
+.body{
+
+  &-section{
+    &.header{
+    }
+
+  }
+
+  &-column{
+    width: 100%;
+
+    &-outer{
+      width: $gutter;
+    }
+
+
+    &-inner{
+      width: unquote( "calc( 100% - #{$double-gutter} )" );
+    }
+
+    &-margin{
+      width: $gutter;
+    }
+  }
+
+  &-table, &-tr, &-td, &-th{
+    padding: 0;
+  }
+
+  &-table{
+    &-upper{
+
+    }
+  }
+
+  &-tr{
+    &-empty{
+    }
+
+    &-content{
+    }
+  }
+
+  &-td, &-th{
+    &-empty{
+      width: $gutter;
+    }
+
+    &-content{
+      @if unit( $gutter ) == '%'{
+        width: ( 100% - $double-gutter );
+      } @else if unit( $gutter ) == 'rem' or unit( $gutter ) == 'px'{
+        width: unquote( "calc( 600px - #{$double-gutter} )" );
+      } @else {
+        width: 100%;
+      }
+      padding: $gutter;
+
+      &.body-td-upper{
+        /* padding: $gutter $gutter 0 $gutter; */
+        padding: $double-gutter $gutter;
+      }
+    }
+  }
+}
+
+.has-text{
+  padding: $half-gutter;
+}
+
+.is-empty{
+  padding: $half-gutter 0;
+}
+
+.title{
+  line-height: 3rem;
+  vertical-align: middle;
+}
+
+.is-heading{
+  font-weight: 300;
+
+  &--caret,
+  &--worksize,
+  &--sub{
+    font-size: 22px;
+  }
+
+  &--caret{
+    font-weight: 700;
+  }
+
+  &--worksize{
+    font-weight: 300;
+  }
+
+  &--sub{
+    font-weight: 300;
+    margin-bottom: 0;
+  }
+
+  &--sub + &{
+    font-weight: 700;
+    margin-top: 0;
+  }
+
+  &--addendum {
+    font-size: 1em;
+  }
+}
+
+.illus{
+  &-logotype{
+    width: 39px;
+    height: 40px;
+  }
+
+  &-cover{
+    display: block;
+    width: 540px;
+    height: 500px;
+  }
+
+}
+
+$ui-icon-margin: 10px;
+
+.icon{
+  margin-right: $ui-icon-margin;
+
+  &-read{
+    width: 12px;
+    height: 12px;
+  }
+
+  &-pinned{
+    width: 9px;
+    height: 16px;
+  }
+
+  &-trello{
+    width: 16px;
+    height: 16px;
+  }
+
+  &-telegram{
+    width: 32px;
+    height: 32px;
+  }
+
+  &-daylight{
+    width: 33px;
+    height: 30px;
+  }
+
+  &-night{
+    width: 18px;
+    height: 30px;
+  }
+
+  &-settings{
+    width: 12px;
+    height: 12px;
+  }
+
+  &-reply-to{
+    width: 14px;
+    height: 16px;
+  }
+
+  &-help{
+    width: 16px;
+    height: 16px;
+  }
+
+  &-close{
+    width: 10px;
+    height: 10px;
+  }
+
+  &-delete{
+    width: 11px;
+    height: 14px;
+  }
+}
+
+.ui-icon{
+  align: middle;
+  vertical-align: middle;
+  max-height: 40px;
+}
+
+%as-link-footer{
+  height: 100%;
+  vertical-align: middle;
+}
+
+.link-footer-label{
+  @extend %as-link-footer;
+  color: get-color( 'bright' );
+
+  & + .ui-icon{
+    margin-left: $ui-icon-margin;
+  }
+}
+
+.link-footer-extra{
+  @extend %as-link-footer;
+  margin-left: $ui-icon-margin;
+}
+
+a.link{
+  &-icon{
+    &-help{
+      color: get-color( 'info' );
+    }
+
+    &-close, &-delete{
+      color: get-color( 'error' );
+    }
+  }
+}
+
+$cta-width: 200px;
+$cta-height: 40px;
+$cta-border-radius: floor( $cta-height / 2 );
+
+@include cta-border-radius( 'get-cta-block-size', $cta-width, $cta-height, $cta-border-radius );
+
+.get-cta-block-size, .cta-link-a{
+  width: $cta-width;
+  height: $cta-height;
+}
+
+.cta-link{
+  &-a{
+    display: table-cell;
+    line-height: $cta-height;
+    vertical-align: middle;
+
+    &, &:active, &:hover, &:focus, &:link, &:visited{
+      text-decoration: none;
+    }
+  }
+
+  &-label{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 1em;
+    text-decoration: none;
+  }
+}
+
+.fragment{
+  @extend %font-texts;
+  font-size: 1.2em;
+  p{
+    @media screen{
+      line-height: 1.5em !important;
+    }
+  }
+}
+
+.plouc{
+  line-height: 1.5em !important;
+}
+
+.spacer{
+  &-footer{
+    height: 32px;
+  }
+
+  &-extra, &-eof{
+    height: $double-gutter;
+  }
+}

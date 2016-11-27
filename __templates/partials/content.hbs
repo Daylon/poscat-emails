@@ -1,0 +1,8 @@
+<div class="fragment">
+	\{{#if contentIllus }}
+		\{{#if contentIllusLink }}<a href="\{{contentIllusLink}}">\{{/if}}
+		<img alt="\{{contentIllus.alt}}" class="illus-cover" src="\{{contentIllus.src}}"/>
+		\{{#if contentIllusLink }}</a>\{{/if}}
+	\{{/if}}
+	\{{{content}}}
+</div>

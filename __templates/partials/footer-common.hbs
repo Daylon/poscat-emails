@@ -1,0 +1,45 @@
+<mj-table class="footer-table">
+	<tr class="footer-tr">
+		<td class="footer-td footer-td-left">
+			<a class="link-footer" href="\{{urlTrello}}">
+				<img
+					class="ui-icon icon-trello"
+					alt="Poscat on Trello"
+					title="Consulter le board Trello du projet"
+					src="\{{urlAssets}}/icon_trello-board@3x.png"
+				>
+			</a>
+			<a class="link-footer" href="\{{urlTelegram}}">
+				<img
+					class="ui-icon icon-telegram"
+					alt="Poscat on Telegram"
+					title="Participer au canal Telegram du projet"
+					src="\{{urlAssets}}/icon_telegram@3x.png"
+				>
+			</a>
+		</td>
+		<td class="footer-td footer-td-center">
+			<a class="link-footer" href="\{{nightday.url}}">
+				<img
+					class="ui-icon icon-{{#if isDark}}daylight{{else}}night{{/if}}"
+					alt="Basculer le thème"
+					title="Recevoir les prochains emails dans un thème \{{nightday.label}}"
+					src="\{{urlAssets}}/icon_{{#if isDark}}daylight{{else}}night{{/if}}@3x.png"
+				>
+			</a>
+		</td>
+		<td class="footer-td footer-td-right">
+			<a class="link-footer" href="\{{urlMailto}}">
+				<span class="link-footer-label">
+					Répondre
+				</span>
+				<img
+					class="ui-icon icon-reply-to"
+					alt="Paramètres"
+					title="Consulter les paramètres de mes abonements"
+					src="\{{urlAssets}}/icon_reply-to@3x.png"
+				>
+			</a>
+		</td>
+	</tr>
+</mj-table>
