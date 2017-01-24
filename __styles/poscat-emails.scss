@@ -45,19 +45,19 @@ $palette: ();
 @mixin set-palette( $set: 'default' ){
   $pal: ();
   $commons: (
-  'brand': #FFD861
-  , 'neutral': #E7DFC6
-  , 'info': #6BD4F1
-  , 'asking': #5BC0BE
-  , 'success': #86DEB7
-  , 'warning': #FF9900
-  , 'error': #FF715B
-  , 'destructive': #BA7BA1
-  , 'dark': #393E41
-  , 'bright': #fff
-  , 'lightgrey': #f9f9f9
-  , 'darkgrey': lighten( #393E41, 5% )
-  );
+	  'brand': #FFD861
+	  , 'neutral': #E7DFC6
+	  , 'info': #6BD4F1
+	  , 'asking': #5BC0BE
+	  , 'success': #86DEB7
+	  , 'warning': #FF9900
+	  , 'error': #FF715B
+	  , 'destructive': #BA7BA1
+	  , 'dark': #393E41
+	  , 'bright': #fff
+	  , 'lightgrey': #f9f9f9
+	  , 'darkgrey': lighten( #393E41, 5% )
+	);
 
   @if not( $set ) or $set == 'default' {
     $pal: (
@@ -113,6 +113,13 @@ $palette: ();
   }
 
   $palette: map-merge( $commons, $pal ) !global;
+}
+
+@mixin ui-sizing( $width: 32px, $height: 32px ){
+  width: $width;
+  height: $height;
+  max-width: $width;
+  max-height: $height;
 }
 
 @mixin make-cta( $cta-style-background: get-color(), $cta-style-border-color:  get-color(), $cta-style-color:  get-color() ){
@@ -659,83 +666,67 @@ mj-table,
 
 .illus{
   &-logotype{
-    width: 39px;
-    height: 40px;
+    @include ui-sizing( 39px, 40px );
   }
 
   &-cover{
     display: block;
-    width: 540px;
-    height: 500px;
+    @include ui-sizing( 540px, 500px );
   }
 
-}
-
-$ui-icon-margin: 10px;
-
-.icon{
-  margin-right: $ui-icon-margin;
-
-  &-read{
-    width: 12px;
-    height: 12px;
-  }
-
-  &-pinned{
-    width: 9px;
-    height: 16px;
-  }
-
-  &-trello{
-    width: 16px;
-    height: 16px;
-  }
-
-  &-telegram{
-    width: 32px;
-    height: 32px;
-  }
-
-  &-daylight{
-    width: 33px;
-    height: 30px;
-  }
-
-  &-night{
-    width: 18px;
-    height: 30px;
-  }
-
-  &-settings{
-    width: 12px;
-    height: 12px;
-  }
-
-  &-reply-to{
-    width: 14px;
-    height: 16px;
-  }
-
-  &-help{
-    width: 16px;
-    height: 16px;
-  }
-
-  &-close{
-    width: 10px;
-    height: 10px;
-  }
-
-  &-delete{
-    width: 11px;
-    height: 14px;
-  }
 }
 
 .ui-icon{
   align: middle;
   vertical-align: middle;
-  max-height: 40px;
+  //max-height: 40px;
+}
+
+$ui-icon-margin: 10px;
+
+.ui-icon.icon{
+  margin-right: $ui-icon-margin;
+
+  &-read{
+    @include ui-sizing( 12px, 12px );
+  }
+
+  &-pinned{
+    @include ui-sizing( 9px, 16px );
+  }
+
+  &-trello{
+    @include ui-sizing( 16px, 16px );
+  }
+
+  &-telegram{
+    @include ui-sizing();
+  }
+
+  &-daylight,
+  &-night{
+    @include ui-sizing( 18px, 20px );
+  }
+
+  &-settings{
+    @include ui-sizing( 12px, 12px );
+  }
+
+  &-reply-to{
+    @include ui-sizing( 14px, 16px );
+  }
+
+  &-help{
+    @include ui-sizing( 16px, 16px );
+  }
+
+  &-close{
+    @include ui-sizing( 10px, 10px );
+  }
+
+  &-delete{
+    @include ui-sizing( 11px, 14px );
+  }
 }
 
 %as-link-footer{
