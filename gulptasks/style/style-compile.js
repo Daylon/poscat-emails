@@ -12,29 +12,34 @@ const GULP = require( 'gulp' )
 , PATHS = require( '../core/core-paths' )
 , ON_ERROR = require( '../core/core-errors' )
 
+
+let lintOptionsSass = {
+  failAfterError: false
+  , reportOutputDir: '/.reports/lint'
+  , reporters: [
+    {
+      formatter: 'string'
+      , console: true
+    }
+  ]
+  , syntax: 'scss'
+}
+, lintOptionsLess = Object.assign({}, lintOptionsSass, { syntax: 'less'})
+, autoprefixerOptions = {
+	browsers: [ '>4%', 'last 3 versions' ]
+	, cascade: false
+}
+
+
 let compileStylesheets = function(){
 
-  let autoprefixerOptions = {
-	  	browsers: [ 'last 3 versions' ]
-	  	, cascade: false
-	  }
-  , compileAllStylesheets = function(){
+  let compileAllStylesheets = function(){
   	let lessStream = GULP.src( `${PATHS.dir.styles.source}*${PATHS.file.lessStylesheets}` )
-    .pipe( STYLE_LINT({
-      reporters: [
-        {formatter: 'string', console: true}
-      ]
-      , syntax: 'less'
-    }) )
+		.pipe( STYLE_LINT( lintOptionsLess ) )
 		.pipe( LESS() )
 
     let sassStream = GULP.src( `${PATHS.dir.styles.source}*${PATHS.file.sassStylesheets}` )
-    .pipe( STYLE_LINT({
-      reporters: [
-        {formatter: 'string', console: true}
-      ]
-      , syntax: 'scss'
-    }) )
+		.pipe( STYLE_LINT( lintOptionsSass ) )
 		.pipe( SASS() )
 
     return EVENT_STREAM.merge.apply( null, [ lessStream, sassStream ] )
