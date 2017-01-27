@@ -288,13 +288,6 @@ $palette: ();
         background-color: get-color( 'bright' );
       }
     }
-
-    &-tr-lower-cta {
-    	& > .body-td-content {
-        border-bottom-left-radius: 12px;
-        border-bottom-right-radius: 12px;
-			}
-    }
   }
 
   &--dark{
@@ -341,6 +334,13 @@ $palette: ();
         align: right;
         text-align: right;
       }
+    }
+  }
+
+  .body-tr-lower-cta {
+    & > .body-td-content {
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
     }
   }
 
