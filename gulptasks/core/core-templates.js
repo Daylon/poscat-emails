@@ -26,18 +26,19 @@ let templates = function(){
       , _d: {
         title: 'Did you lost your password?'
         , hasPrefooter: true
-        , isPrefooterALink : true
+        , isPrefooterALink: true
       }
     }
     , {
       name: 'read--in-progress'
       , theme: 'as-reading'
       , _d: {
-        canBeReadLater : true
+        canBeReadLater: true
         , hasPlayPauseButton: true
-        , hasCaret : true
+        , hasCaret: true
+				, hasExtensiveUI: true
         , hasPrefooter: true
-        , isPrefooterALink : true
+        , isPrefooterALink: true
         , extraFooter: {
           icon: 'icon_error-end@3x'
           , class: 'icon-close'
@@ -49,8 +50,8 @@ let templates = function(){
       , theme: 'as-warning'
       , _d: {
         hasPrefooter: true
-        , isPause : true
-        , isPrefooterALink : true
+        , isPause: true
+        , isPrefooterALink: true
         , extraFooter: {
           icon: 'icon_helper-cue@3x'
           , class: 'icon-help'
@@ -62,7 +63,7 @@ let templates = function(){
       , theme: 'as-warning'
       , _d: {
         hasPrefooter: true
-        , isPrefooterALink : true
+        , isPrefooterALink: true
         , extraFooter: {
           icon: 'icon_helper-cue@3x'
           , class: 'icon-help'
