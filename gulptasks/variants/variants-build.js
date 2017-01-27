@@ -18,7 +18,7 @@ let buildVariant = function(){
   .pipe( HTML_MIN({
     maxLineLength: 960
     , collapseWhitespace: true
-    , collapseInlineTagWhitespace: true
+    , collapseInlineTagWhitespace: false
   }) )
   .pipe( RENAME({
     extname : PATHS.file.production
