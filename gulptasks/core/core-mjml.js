@@ -51,6 +51,7 @@ const MJML_DICTIONARY = {
   ]
   , 'mj-text' : [
     'color'
+		, 'height'
     , 'font-family'
     , 'font-size'
     , 'font-style'
