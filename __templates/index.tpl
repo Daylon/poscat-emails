@@ -52,7 +52,7 @@
           </mj-table>
 
 <!-- call to action -->
-          <mj-table class="body-table body-table-lower">
+          <mj-table class="body-table body-table-lower body-table-lower-cta">
             <tr class="body-tr body-tr-lower body-tr-lower-cta">
               <td class="body-td body-td-lower body-td-empty">&nbsp;</td>
               <td class="body-td body-td-lower body-td-content">
@@ -64,7 +64,6 @@
               <td class="body-td body-td-lower body-td-empty">&nbsp;</td>
             </tr>
           </mj-table>
-
         </mj-column>
       </mj-section>
 
