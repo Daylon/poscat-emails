@@ -1,4 +1,7 @@
 <mjml>
+<mj-head>
+	<mj-title>\{{#if subject}}\{{subject}}\{{else}}Poscat\{{/if}}</mj-title>
+</mj-head>
 <mj-body class="body body-v1">
 <mj-container class="mj-container {{theme}} {{#if isDark}}{{theme}}--dark{{/if}}">
 
