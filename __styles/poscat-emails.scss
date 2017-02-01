@@ -45,19 +45,19 @@ $palette: ();
 @mixin set-palette( $set: 'default' ){
   $pal: ();
   $commons: (
-	  'brand': #FFD861
-	  , 'neutral': #E7DFC6
-	  , 'info': #6BD4F1
-	  , 'asking': #5BC0BE
-	  , 'success': #86DEB7
-	  , 'warning': #FF9900
-	  , 'error': #FF715B
-	  , 'destructive': #BA7BA1
-	  , 'dark': #393E41
-	  , 'bright': #fff
-	  , 'lightgrey': #f9f9f9
-	  , 'darkgrey': lighten( #393E41, 5% )
-	);
+    'brand': #FFD861
+    , 'neutral': #E7DFC6
+    , 'info': #6BD4F1
+    , 'asking': #5BC0BE
+    , 'success': #86DEB7
+    , 'warning': #FF9900
+    , 'error': #FF715B
+    , 'destructive': #BA7BA1
+    , 'dark': #393E41
+    , 'bright': #fff
+    , 'lightgrey': #f9f9f9
+    , 'darkgrey': lighten( #393E41, 5% )
+  );
 
   @if not( $set ) or $set == 'default' {
     $pal: (
@@ -122,12 +122,12 @@ $palette: ();
   max-height: $height;
 }
 
-@mixin make-cta( $cta-style-background: get-color(), $cta-style-border-color:  get-color(), $cta-style-color:  get-color() ){
-  .get-cta-block-size{
+@mixin make-cta( $target: 'get-cta-block-size', $cta-style-background: get-color(), $cta-style-border-color:  get-color(), $cta-style-color:  get-color() ){
+  .#{$target}{
     background-color: $cta-style-background;
   }
 
-  .vml-get-cta-block-size{
+  .vml-#{$target}{
     strokecolor: $cta-style-border-color;
 
     & > v, &-fill{
@@ -301,7 +301,6 @@ $palette: ();
       &.body-td-upper{
         color: get-color( 'bright' );
       }
-
     }
   }
 
@@ -344,16 +343,55 @@ $palette: ();
     }
   }
 
+  .body-tr-lower-moreui {
+    & > .body-td-content.is-bright {
+      padding: $double-gutter;
+    }
+
+    &.is-bright > .body-td-content {
+      background-color: get-color( 'main' );
+    }
+  }
+
+  .moreui.is-container.is-dark {
+    padding: $half-gutter $gutter;
+    background-color: lighten( get-color( 'dark' ), 5% );
+  }
+
   $cta-style-color: get-color( 'cta-color' );
   $cta-style-background: get-color( 'main' );
   $cta-style-border-color: get-color( 'main' );
-  @include make-cta( $cta-style-background, $cta-style-border-color, $cta-style-color );
+  @include make-cta( 'get-cta-block-size', $cta-style-background, $cta-style-border-color, $cta-style-color );
 
-  &--dark{
+  &--dark {
     $cta-style-color: get-color( 'main' );
     $cta-style-background: lighten( get-color( 'dark' ), 5% );
     $cta-style-border-color: get-color( 'main' );
-    @include make-cta( $cta-style-background, $cta-style-border-color, $cta-style-color );
+    @include make-cta( 'get-cta-block-size', $cta-style-background, $cta-style-border-color, $cta-style-color );
+  }
+
+	.body-tr-lower-moreui {
+		&.is-dark {
+			$cta-style-color: get-color( 'main' );
+	    $cta-style-background: lighten( get-color( 'dark' ), 5% );
+	    $cta-style-border-color: transparent;
+			@include make-cta( 'cta-moreui', $cta-style-background, $cta-style-border-color, $cta-style-color );
+		}
+	}
+
+  $size-moreui: 40px;
+  .moreui {
+    display: inline-block;
+    height: $size-moreui;
+
+    &.pastille {
+      width: $size-moreui;
+    }
+
+    &.label {
+      padding-left: $gutter;
+      line-height: $size-moreui;
+    }
   }
 }
 
@@ -368,22 +406,23 @@ MISC MIXINS
 
 @mixin cta-border-radius( $target: 'cta', $width: 200px, $height: 40px, $radius: 3px ){
   $arcValue: 0;
-  @if is-percentage( $radius ){
+  @if is-percentage( $radius ) or type-of($width) == 'string' {
     $arcValue: $radius;
   } @else {
     $arcValue: unquote( '#{round( 100 / strip-unit( $width ) * strip-unit( $radius ) )}%' );
   }
 
-  .#{$target}, .vml-#{$target}{
+  .#{$target},
+  .vml-#{$target} {
     width: $width;
     height: $height;
   }
 
-  .vml-#{$target}{
+  .vml-#{$target} {
     arcsize: $arcValue;
   }
 
-  .#{$target}{
+  .#{$target} {
     border-radius: $radius;
   }
 }
@@ -554,6 +593,21 @@ mj-table,
 
 }
 
+.td-left{
+  text-align: left;
+  align: left;
+}
+
+.td-center{
+  text-align: center;
+  align: center;
+}
+
+.td-right{
+  text-align: right;
+  align: right;
+}
+
 .as-header{
   padding: ( $gutter / 10 ) $gutter;
   font-size: 11px;
@@ -691,48 +745,54 @@ mj-table,
 
 $ui-icon-margin: 10px;
 
-.ui-icon.icon{
+.ui-icon.icon {
   margin-right: $ui-icon-margin;
 
-  &-read{
+  &-read {
     @include ui-sizing( 12px, 12px );
   }
 
-  &-pinned{
+  &-pinned {
     @include ui-sizing( 9px, 16px );
   }
 
-  &-trello{
+  &-trello {
     @include ui-sizing( 16px, 16px );
   }
 
-  &-telegram{
+  &-telegram {
     @include ui-sizing();
   }
 
   &-daylight,
-  &-night{
+  &-night {
     @include ui-sizing( 18px, 20px );
   }
 
-  &-settings{
+  &-settings {
     @include ui-sizing( 12px, 12px );
   }
 
-  &-reply-to{
+  &-reply-to {
     @include ui-sizing( 14px, 16px );
   }
 
-  &-help{
+  &-help {
     @include ui-sizing( 16px, 16px );
   }
 
-  &-close{
+  &-close {
     @include ui-sizing( 10px, 10px );
   }
 
-  &-delete{
+  &-delete {
     @include ui-sizing( 11px, 14px );
+  }
+
+  &-calendar {
+    &.as-bt {
+      @include ui-sizing( 40px, 40px );
+    }
   }
 }
 
@@ -768,14 +828,26 @@ a.link{
 }
 
 $cta-width: 200px;
+$moreui-width: 300px;
 $cta-height: 40px;
 $cta-border-radius: floor( $cta-height / 2 );
 
 @include cta-border-radius( 'get-cta-block-size', $cta-width, $cta-height, $cta-border-radius );
+@include cta-border-radius( 'cta-moreui', $moreui-width, $cta-height, $cta-border-radius );
 
-.get-cta-block-size, .cta-link-a{
-  width: $cta-width;
+.get-cta-block-size,
+.cta-link-a,
+.cta-link-moreui {
   height: $cta-height;
+}
+
+.get-cta-block-size,
+.cta-link-a {
+  width: $cta-width;
+}
+
+.cta-link-moreui {
+	width: $moreui-width;
 }
 
 .cta-link{

@@ -1,4 +1,5 @@
 <!--<BUTTON>-->
+{{#if label}}
 <center class="cta-container">
     <div class="cta-container-exterior">
 {{#wrapInIEConditional}}
@@ -12,7 +13,7 @@
 	<v:fill class="vml-get-cta-block-size-fill" />
 	<w:anchorlock/>
 	<center class="cta-link-label vml-cta-link-label">
-		\{{callToAction}}
+		{{label}}
 	</center>
 </v:rect>
 {{/wrapInIEConditional}}
@@ -22,7 +23,7 @@
                     <tr>
                         <td class="cta-button get-cta-block-size" align="center">
                             <a class="cta-link-a border-less" href="\{{ctaHref}}" title="Button">
-                                <strong class="cta-link-label">\{{callToAction}}</strong>
+                                <strong class="cta-link-label">{{label}}</strong>
                             </a>
                         </td>
                     </tr>
@@ -31,4 +32,5 @@
         </div>
     </div>
 </center>
+{{/if}}
 <!--</BUTTON>-->
