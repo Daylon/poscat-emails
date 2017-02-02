@@ -273,19 +273,44 @@ $palette: ();
 
     }
 
-    &-td, &-th{
-      &-upper{
+    &-td,
+    &-th {
+      &-upper {
         background-color: get-color( 'main' );
       }
 
-      &-lower{
-        padding-bottom: $double-gutter;
+      &-lower {
+        padding-bottom: $gutter;
         background-color: get-color( 'dark' );
       }
 
-      &-content{
+      &-content {
         font-size: 12px;
         background-color: get-color( 'bright' );
+
+        &-moreui {
+          padding: 0 $gutter;
+          background-color: get-color( 'main' );
+        }
+      }
+    }
+
+    &-tr {
+      &-moreui {
+        & > .body-td {
+          padding-top: 0;
+
+          &.is-bright {
+            padding-left: $double-gutter;
+            padding-right: $double-gutter;
+          }
+        }
+
+        /*&-lower.is-bright {
+          & > .body-td {
+            background-color: get-color( 'main' );
+          }
+        }*/
       }
     }
   }
@@ -336,22 +361,30 @@ $palette: ();
     }
   }
 
+  .body-tr-first {
+    & > .body-td-content {
+      padding-top: $double-gutter;
+    }
+  }
+
   .body-tr-last {
     & > .body-td-content {
       border-bottom-left-radius: 12px;
       border-bottom-right-radius: 12px;
+      padding-bottom: $double-gutter;
     }
   }
 
-  .body-tr-lower-moreui {
+  /*.body-tr-lower-moreui {
     & > .body-td-content.is-bright {
-      padding: $double-gutter;
+      padding-left: $double-gutter;
+      padding-right: $double-gutter;
     }
 
     &.is-bright > .body-td-content {
       background-color: get-color( 'main' );
     }
-  }
+  }*/
 
   .moreui.is-container.is-dark {
     padding: $half-gutter $gutter;
@@ -370,14 +403,14 @@ $palette: ();
     @include make-cta( 'get-cta-block-size', $cta-style-background, $cta-style-border-color, $cta-style-color );
   }
 
-	.body-tr-lower-moreui {
-		&.is-dark {
-			$cta-style-color: get-color( 'main' );
-	    $cta-style-background: lighten( get-color( 'dark' ), 5% );
-	    $cta-style-border-color: transparent;
-			@include make-cta( 'cta-moreui', $cta-style-background, $cta-style-border-color, $cta-style-color );
-		}
-	}
+  .body-tr-lower-moreui {
+    &.is-dark {
+      $cta-style-color: get-color( 'main' );
+      $cta-style-background: lighten( get-color( 'dark' ), 5% );
+      $cta-style-border-color: transparent;
+      @include make-cta( 'cta-moreui', $cta-style-background, $cta-style-border-color, $cta-style-color );
+    }
+  }
 
   $size-moreui: 40px;
   .moreui {
@@ -427,16 +460,21 @@ MISC MIXINS
   }
 }
 
-img{
+img {
   border: 0;
 }
 
-a, a:link, a:visited, a:focus, a:active, a:hover{
+a,
+a:link,
+a:visited,
+a:focus,
+a:active,
+a:hover {
   text-decoration: none;
 }
 
-@media screen{
-  a.link:hover{
+@media screen {
+  a.link:hover {
     text-decoration: underline !important;
   }
 }
@@ -446,32 +484,34 @@ a, a:link, a:visited, a:focus, a:active, a:hover{
 */
 
 
-.as-sign-up{
+.as-sign-up {
   @include set-colors( 'brand' );
 }
 
-.as-reading{
+.as-reading {
   @include set-colors();
 }
 
-.as-warning{
+.as-warning {
   @include set-colors( 'warning' );
 }
 
-.as-info, .as-faq, .as-interactive{
+.as-info,
+.as-faq,
+.as-interactive {
   @include set-colors( 'info' );
 }
 
-.as-finished{
+.as-finished {
   $palname: 'success' !global;
   @include set-colors( 'success' );
 }
 
-.as-exit{
+.as-exit {
   @include set-colors( 'errored' );
 }
 
-.as-closed-account{
+.as-closed-account {
   @include set-colors( 'destructive' );
 }
 
@@ -479,13 +519,13 @@ a, a:link, a:visited, a:focus, a:active, a:hover{
   /END OF PALETTES
 */
 
-.link-footer{
-  & + &{
+.link-footer {
+  & + & {
     margin-left: 16px;
   }
 }
 
-.as-vertically-centered{
+.as-vertically-centered {
   valign: middle;
   vertical-align: middle;
 }
@@ -496,34 +536,34 @@ mj-button,
 mj-table,
 .is-heading,
 .is-heading--sub,
-.is-heading--addendum{
+.is-heading--addendum {
   @extend %font-condensend;
 }
 
-.mj-container{
+.mj-container {
   padding-top: $gutter;
 }
 
-.mj-section{
+.mj-section {
   full-width: "full-width";
   padding: 0;
 }
 
-.mj-column{
+.mj-column {
   padding-left: 0;
   padding-right: 0;
 }
 
-.mj-text{
+.mj-text {
   padding: 0;
 }
 
-.is-full-width{
+.is-full-width {
   width: 100%;
 }
 
-.push{
-  &-column{
+.push {
+  &-column {
     padding: 0;
     mj-text{
       font-size: 0;
@@ -532,46 +572,50 @@ mj-table,
   }
 }
 
-.preheader{
-  &-column{
+.preheader {
+  &-column {
     width: 100%;
   }
 }
 
-.header, .main{
-  &-column{
+.header,
+.main {
+  &-column {
 
-    &-block, &-table, &-tr, &-td{
+    &-block,
+    &-table,
+    &-tr,
+    &-td {
       height: 100px;
     }
 
-    &-table{ // @include table-padding( value )
+    &-table { // @include table-padding( value )
       width: 100%;
       align: center;
 
-      &-3-cols{
-        td{
+      &-3-cols {
+        td {
           width: 33%;
         }
       }
 
-      &-td{
+      &-td {
         text-align: center;
         padding: $gutter 0;
         valign: middle;
         vertical-align: middle;
 
-        &.td-left{
+        &.td-left {
           text-align: left;
           align: left;
         }
 
-        &.td-center{
+        &.td-center {
           text-align: center;
           align: center;
         }
 
-        &.td-right{
+        &.td-right {
           text-align: right;
           align: right;
         }
@@ -579,100 +623,83 @@ mj-table,
       }
     }
 
-    strong{
+    strong {
       @extend %font-regular;
       font-weigh: 500;
     }
 
-    em{
+    em {
       @extend %font-condensend;
       font-weight: 300;
     }
 
   }
-
 }
 
-.td-left{
+.td-left {
   text-align: left;
   align: left;
 }
 
-.td-center{
+.td-center {
   text-align: center;
   align: center;
 }
 
-.td-right{
+.td-right {
   text-align: right;
   align: right;
 }
 
-.as-header{
+.as-header {
   padding: ( $gutter / 10 ) $gutter;
   font-size: 11px;
   align: center;
 }
 
-.body{
+.body {
 
-  &-section{
-    &.header{
-    }
-
-  }
-
-  &-column{
+  &-column {
     width: 100%;
 
-    &-outer{
+    &-outer {
       width: $gutter;
     }
 
 
-    &-inner{
+    &-inner {
       width: unquote( "calc( 100% - #{$double-gutter} )" );
     }
 
-    &-margin{
+    &-margin {
       width: $gutter;
     }
   }
 
-  &-table, &-tr, &-td, &-th{
+  &-table,
+  &-tr,
+  &-td,
+  &-th {
     padding: 0;
   }
 
-  &-table{
-    &-upper{
-
-    }
-  }
-
-  &-tr{
-    &-empty{
-    }
-
-    &-content{
-    }
-  }
-
-  &-td, &-th{
-    &-empty{
+  &-td,
+  &-th {
+    &-empty {
       width: $gutter;
     }
 
-    &-content{
-      @if unit( $gutter ) == '%'{
+    &-content {
+      @if unit( $gutter ) == '%' {
         width: ( 100% - $double-gutter );
-      } @else if unit( $gutter ) == 'rem' or unit( $gutter ) == 'px'{
+      } @else if unit( $gutter ) == 'rem' or unit( $gutter ) == 'px' {
         width: unquote( "calc( 600px - #{$double-gutter} )" );
       } @else {
         width: 100%;
       }
       padding: $gutter;
 
-      &.body-td-upper{
+      &.body-td-upper {
         /* padding: $gutter $gutter 0 $gutter; */
         padding: $double-gutter $gutter;
       }
@@ -680,42 +707,42 @@ mj-table,
   }
 }
 
-.has-text{
+.has-text {
   padding: $half-gutter;
 }
 
-.is-empty{
+.is-empty {
   padding: $half-gutter 0;
 }
 
-.title{
+.title {
   line-height: 3rem;
   vertical-align: middle;
 }
 
-.is-heading{
+.is-heading {
   font-weight: 300;
 
   &--caret,
   &--worksize,
-  &--sub{
+  &--sub {
     font-size: 22px;
   }
 
-  &--caret{
+  &--caret {
     font-weight: 700;
   }
 
-  &--worksize{
+  &--worksize {
     font-weight: 300;
   }
 
-  &--sub{
+  &--sub {
     font-weight: 300;
     margin-bottom: 0;
   }
 
-  &--sub + &{
+  &--sub + & {
     font-weight: 700;
     margin-top: 0;
   }
@@ -847,21 +874,26 @@ $cta-border-radius: floor( $cta-height / 2 );
 }
 
 .cta-link-moreui {
-	width: $moreui-width;
+  width: $moreui-width;
 }
 
-.cta-link{
-  &-a{
+.cta-link {
+  &-a {
     display: table-cell;
     line-height: $cta-height;
     vertical-align: middle;
 
-    &, &:active, &:hover, &:focus, &:link, &:visited{
+    &,
+    &:active,
+    &:hover,
+    &:focus,
+    &:link,
+    &:visited {
       text-decoration: none;
     }
   }
 
-  &-label{
+  &-label {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-style: normal;
@@ -870,26 +902,27 @@ $cta-border-radius: floor( $cta-height / 2 );
   }
 }
 
-.fragment{
+.fragment {
   @extend %font-texts;
   font-size: 1.2em;
-  p{
-    @media screen{
+  p {
+    @media screen {
       line-height: 1.5em !important;
     }
   }
 }
 
-.plouc{
+.plouc {
   line-height: 1.5em !important;
 }
 
-.spacer{
-  &-footer{
+.spacer {
+  &-footer {
     height: 32px;
   }
 
-  &-extra, &-eof{
+  &-extra,
+  &-eof {
     height: $double-gutter;
   }
 }
