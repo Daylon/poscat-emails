@@ -899,6 +899,10 @@ $cta-border-radius: floor( $cta-height / 2 );
     font-style: normal;
     line-height: 1em;
     text-decoration: none;
+
+    &.is-lighter {
+      font-weight: 300;
+    }
   }
 }
 
