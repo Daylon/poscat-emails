@@ -7,7 +7,7 @@ const PATHS = {
       source : './__templates/'
       , partials : './__templates/partials/'
       , variants : './__templates/variants/'
-      , dist : './dist/'
+      , dist : '../views/emailing/'
     }
     , styles : {
       source : './__styles/'
