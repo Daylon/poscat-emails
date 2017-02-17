@@ -6,11 +6,16 @@ const GULP = require( 'gulp' )
 
 let cleanUp = function(){
   console.log( '\n\u001b[38;5;202mDeleting…\u001b[0m')
-  return DEL([
-    `${PATHS.dir.variants.variants}**/*`
-    , `${PATHS.dir.variants.dist}*`
-    , `${PATHS.dir.styles.dist}*`
-  ])
+  return DEL(
+		[
+	    `${PATHS.dir.variants.variants}**/*`
+	    , `${PATHS.dir.variants.dist}*`
+	    , `${PATHS.dir.styles.dist}*`
+	  ]
+		, {
+			force: true
+		}
+	)
 }
 
 GULP.task( 'core-clean', cleanUp )
