@@ -8,6 +8,10 @@ const GULP = require( 'gulp' )
 , TEMPLATES = require( '../core/core-templates' )
 , ON_ERROR = require( '../core/core-errors' )
 
+const FILES_TO_PARSE = [
+	`!${PATHS.dir.variants.source}/${PATHS.dir.variants.textPrefix}*${PATHS.file.template}`
+	, `${PATHS.dir.variants.source}/*${PATHS.file.template}`
+]
 
 let prepareVariants = function(){
   let variants
@@ -20,7 +24,7 @@ let prepareVariants = function(){
   , renderEntry = function( _entry ){
     console.log( `\trendering ${_entry.name}…` )
 
-    return GULP.src( `${PATHS.dir.variants.source}*${PATHS.file.template}` )
+    return GULP.src( FILES_TO_PARSE )
     .pipe( HANDLEBARS(
       _entry
       , tplOptions
