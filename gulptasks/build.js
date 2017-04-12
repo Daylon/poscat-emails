@@ -11,6 +11,7 @@ let build = function(){
     , 'style-compile'
     , 'style-inject'
     , 'variants-build'
+		, 'variants-text'
   )()
 }
 

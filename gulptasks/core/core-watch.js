@@ -12,7 +12,7 @@ const GULP = require( 'gulp' )
   , `${PATHS.dir.variants.source}**/*${PATHS.file.template}`
 ]
 
-let watchTextVersions = () => GULP.watch( FILES_FOR_TEXT_VERSIONS, [ 'variants-text-versions' ], [ 'add', 'change' ] )
+let watchTextVersions = () => GULP.watch( FILES_FOR_TEXT_VERSIONS, [ 'variants-text' ], [ 'add', 'change' ] )
 , watchEmails = () => GULP.watch( FILES_TO_WATCH_OUT, [ 'build' ], [ 'change' ] ) // https://github.com/floatdrop/gulp-watch#api
 , setWatchers = () => SEQUENCE( 'watch-text-versions', 'watch-emails' )()
 

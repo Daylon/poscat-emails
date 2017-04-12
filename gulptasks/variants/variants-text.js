@@ -8,8 +8,7 @@ const GULP = require( 'gulp' )
 , PATHS = require( '../core/core-paths' )
 , TEMPLATES = require( '../core/core-templates' )
 
-let variantsTextVersions = function(){
-
+let variantsText = function(){
 	let textVariants = []
 	, tplOptions = {
 		ignorePartials: true
@@ -18,25 +17,25 @@ let variantsTextVersions = function(){
 	}
 	, renderTextEntry = function( _textEntry ){
 		return GULP.src( `${PATHS.dir.variants.source}**/${PATHS.dir.variants.textPrefix}*${PATHS.file.template}` )
-		.pipe( IGNORE( () => !_textEntry.isDark ) )
-		.pipe( HANDLEBARS(
-			_textEntry
-			, tplOptions
-		))
-		.pipe( RENAME({
-			prefix : 'email-'
-			, basename : _textEntry.name
-			, extname : PATHS.file.text
-		}) )
-		.pipe( GULP.dest( `${PATHS.dir.variants.dist}` ) )
+			.pipe( IGNORE( () => _textEntry.isDark ) )
+			.pipe( HANDLEBARS(
+				_textEntry
+				, tplOptions
+			))
+			.pipe( RENAME({
+				prefix : 'email-'
+				, basename : _textEntry.name
+				, extname : PATHS.file.text
+			}) )
 	}
 
 	console.log( '\n\u001b[38;5;120;1m> TPL \u001b[0m\u001b[38;5;115m Text versions…\u001b[0m')
 
 	textVariants = TEMPLATES.data.map( renderTextEntry )
-	return EVENT_STREAM.merge.apply( null, textVariants )
+	EVENT_STREAM.merge.apply( null, textVariants )
+		.pipe( GULP.dest( `${PATHS.dir.variants.dist}` ) )
 }
 
-GULP.task( 'variants-text-versions', variantsTextVersions )
+GULP.task( 'variants-text', variantsText )
 
-module.exports = variantsTextVersions
+module.exports = variantsText
