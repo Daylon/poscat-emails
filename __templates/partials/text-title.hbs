@@ -2,7 +2,7 @@
 \{{title.a}} \{{title.b}}\{{#if title.c}}\{{title.c}}\{{/if}}
 {{else}}
 	{{#unless _d.hasCaret}}
-			\{{{title}}}
+			\{{#stripHTML}}\{{{title}}}\{{/stripHTML}}
 	{{else}}
 		\{{caret}}/\{{size}}
 	{{/unless}}
