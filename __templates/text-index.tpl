@@ -1,14 +1,14 @@
 \{{#if subject}}\{{subject}}\{{else}}Poscat\{{/if}}
 --------
---------
+
 \{{#stripHTML}}
 \{{{preheader}}}
 \{{/stripHTML}}
-
-{{> text-main-header}}
 ----
+
 {{> text-title}}
 ----
+
 \{{#stripHTML}}{{{content}}}\{{/stripHTML}}
 
 \{{#unless hideCTA}}
@@ -26,6 +26,8 @@
 |		\{{rhythm.next}} — \{{rhythm.editlabel}}:
 |		\{{rhythm.edit}}
 {{/if}}
+
+{{> text-ctrls}}
 
 ---------
 {{> text-footer-common}}

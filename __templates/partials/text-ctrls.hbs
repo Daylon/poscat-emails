@@ -1,0 +1,13 @@
+{{#if _d.hasPlayPauseButton}}
+|		----
+|		\{{playpause.alt}} \{{playpause.label}}:
+|   \{{playpause.url}}
+{{/if}}
+{{#if _d.canBeReadLater}}
+|		----
+|		Sauvegarger ce fragment in \{{saveto.name}}:
+|   \{{saveto.link}}
+{{/if}}
+|		----
+|		Recevoir les prochains emails dans un thème \{{nightday.label}}:
+|   \{{nightday.url}}

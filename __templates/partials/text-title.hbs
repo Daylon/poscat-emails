@@ -1,9 +1,9 @@
 {{#if _d.isDoubleTitle}}
 \{{title.a}} \{{title.b}}\{{#if title.c}}\{{title.c}}\{{/if}}
 {{else}}
-	{{#unless _d.hasCaret}}
-			\{{#stripHTML}}\{{{title}}}\{{/stripHTML}}
-	{{else}}
-		\{{caret}}/\{{size}}
-	{{/unless}}
+{{#unless _d.hasCaret}}
+\{{#stripHTML}}\{{{title}}}\{{/stripHTML}}
+{{else}}
+\{{caret}}/\{{size}}
+{{/unless}}
 {{/if}}
