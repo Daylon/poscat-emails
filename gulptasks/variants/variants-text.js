@@ -16,7 +16,7 @@ let variantsText = function(){
 		, helpers: {}
 	}
 	, renderTextEntry = function( _textEntry ){
-		return GULP.src( `${PATHS.dir.variants.source}**/${PATHS.dir.variants.textPrefix}*${PATHS.file.template}` )
+		return GULP.src( `${PATHS.dir.variants.source}/${PATHS.dir.variants.textPrefix}*${PATHS.file.template}` )
 			.pipe( IGNORE( () => _textEntry.isDark ) )
 			.pipe( HANDLEBARS(
 				_textEntry
