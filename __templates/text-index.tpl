@@ -1,15 +1,13 @@
 \{{#if subject}}\{{subject}}\{{else}}Poscat\{{/if}}
 --------
 
-\{{#stripHTML}}
 \{{{preheader}}}
-\{{/stripHTML}}
 ----
 
 {{> text-title}}
 ----
 
-\{{#stripHTML}}{{{content}}}\{{/stripHTML}}
+\{{{content}}}
 
 \{{#unless hideCTA}}
 |		----
@@ -18,7 +16,7 @@
 \{{/unless}}
 {{#if _d.hasPrefooter}}
 |		----
-|		\{{#stripHTML}}\{{{prefooterMessage}}}\{{/stripHTML}}{{#if _d.isPrefooterALink}}:
+|		\{{{prefooterMessage}}}{{#if _d.isPrefooterALink}}:
 |		\{{prefooterLink}}{{/if}}
 {{/if}}
 {{#if _d.hasExtensiveUI}}
