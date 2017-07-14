@@ -1,8 +1,8 @@
 'use strict'
 
 const EMAIL_VARIANTS = {
-  'confirm-subscripton' : {}
-  , 'fragment' : {}
+	'confirm-subscripton': {},
+	fragment: {}
 }
 
 module.exports = EMAIL_VARIANTS
