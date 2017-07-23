@@ -759,6 +759,7 @@ mj-table,
 
   &-cover{
     display: block;
+    margin-top: -$gutter;
     @include ui-sizing( 540px, 500px );
   }
 

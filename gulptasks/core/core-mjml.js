@@ -5,7 +5,7 @@ const MJML_DICTIONARY = {
 	'table, td': ['bgcolor'],
 	table: [, 'cellpadding', 'cellspacing'],
 	td: ['valign'],
-	img: ['border'],
+	img: ['border', 'width', 'height'],
 	'v\\:rect': ['width', 'height', 'color', 'strokecolor', 'arcsize'],
 	'mj-body, mj-container, mj-section, mj-column, mj-button': [
 		'background-color'

@@ -20,7 +20,8 @@ let injectStyleInVariants = function() {
 				preserveMediaQueries: true,
 				removeStyleTags: true,
 				removeLinkTags: false,
-				applyAttributesTo: MJML_DICTIONARY
+				applyAttributesTo: MJML_DICTIONARY,
+				skipRemoteStylesheets: true
 			}).on('error', onInjectStyleError)
 		)
 		.pipe(GULP.dest(PATHS.dir.variants.variants))
