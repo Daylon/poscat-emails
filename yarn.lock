@@ -669,6 +669,10 @@ css-parse@^2.0.0:
   dependencies:
     css "^2.0.0"
 
+css-property@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/css-property/-/css-property-2.0.0.tgz#39b772471a69d48a4f494f601e5e03b414c81d96"
+
 css-rule-stream@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/css-rule-stream/-/css-rule-stream-1.1.0.tgz#3786e7198983d965a26e31957e09078cbb7705a2"
@@ -678,11 +682,11 @@ css-rule-stream@^1.1.0:
     ldjson-stream "^1.2.1"
     through2 "^0.6.3"
 
-css-rules@Daylon/css-rules:
+css-rules@^1.0.0:
   version "1.0.2"
-  resolved "https://codeload.github.com/Daylon/css-rules/tar.gz/c524aa14ce3ea64094e48f1c751f114c3f470e67"
+  resolved "https://registry.yarnpkg.com/css-rules/-/css-rules-1.0.2.tgz#f2d05444c0927da09e46d1ca695af81a6fc525d9"
   dependencies:
-    cssom Daylon/CSSOM
+    cssom "^0.3.0"
 
 css-select@~1.0.0:
   version "1.0.0"
@@ -744,9 +748,9 @@ csso@^3.0.0:
   dependencies:
     css-tree "1.0.0-alpha19"
 
-cssom@Daylon/CSSOM:
+cssom@^0.3.0:
   version "0.3.2"
-  resolved "https://codeload.github.com/Daylon/CSSOM/tar.gz/b75f16a3c87c2a1265a644a1659c72b72e4d5fc9"
+  resolved "https://registry.yarnpkg.com/cssom/-/cssom-0.3.2.tgz#b8036170c79f07a90ff2f16e22284027a243848b"
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -1070,14 +1074,14 @@ extglob@^0.3.1:
   dependencies:
     is-extglob "^1.0.0"
 
-extract-css@Daylon/extract-css:
+extract-css@^1.0.0:
   version "1.0.3"
-  resolved "https://codeload.github.com/Daylon/extract-css/tar.gz/20b77dddd2b28b51fa904787e7b5111fc161a1d1"
+  resolved "https://registry.yarnpkg.com/extract-css/-/extract-css-1.0.3.tgz#aca7b84bf7e138a5dfab2b9024a499549f935046"
   dependencies:
     batch "^0.5.2"
     href-content "^1.0.0"
     list-stylesheets "^1.1.0"
-    style-data Daylon/style-data
+    style-data "^1.1.0"
 
 extsprintf@1.0.2:
   version "1.0.2"
@@ -1931,13 +1935,13 @@ inline-css@daylon/inline-css:
   dependencies:
     bluebird "^2.9.25"
     cheerio "^0.19.0"
-    css-property "^2.0.0"
-    css-rules "^1.0.0"
+    css-rules Daylon/css-rules
     extend "^3.0.0"
-    extract-css "^1.0.0"
+    extract-css Daylon/extract-css
     flatten "0.0.1"
     object.pick "^1.1.1"
-    style-selector "^2.0.0"
+    slick "^1.12.1"
+    specificity "^0.1.5"
 
 interpret@^1.0.0:
   version "1.0.3"
@@ -2680,11 +2684,11 @@ mathml-tag-names@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/mathml-tag-names/-/mathml-tag-names-2.0.1.tgz#8d41268168bf86d1102b98109e28e531e7a34578"
 
-mediaquery-text@Daylon/mediaquery-text:
+mediaquery-text@^1.0.0:
   version "1.0.2"
-  resolved "https://codeload.github.com/Daylon/mediaquery-text/tar.gz/c32c75d296cf451dce56d9d400d625a3f9fba4b2"
+  resolved "https://registry.yarnpkg.com/mediaquery-text/-/mediaquery-text-1.0.2.tgz#3e4598cc3a7db7e96f50ab9c702f1f6cf63180d2"
   dependencies:
-    cssom Daylon/CSSOM
+    cssom "^0.3.0"
 
 mem@^1.1.0:
   version "1.1.0"
@@ -4030,10 +4034,6 @@ spdx-license-ids@^1.0.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-1.2.2.tgz#c9df7a3424594ade6bd11900d596696dc06bac57"
 
-specificity@^0.1.5:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/specificity/-/specificity-0.1.6.tgz#aa501048f96e69485ddc95ef9f7a5b77f01232aa"
-
 specificity@^0.3.0:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/specificity/-/specificity-0.3.1.tgz#f1b068424ce317ae07478d95de3c21cf85e8d567"
@@ -4169,18 +4169,24 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-style-data@Daylon/style-data:
+style-data@^1.1.0:
   version "1.1.2"
-  resolved "https://codeload.github.com/Daylon/style-data/tar.gz/99c23f1c85ceb1d3af76e9cea13e4e4385034970"
+  resolved "https://registry.yarnpkg.com/style-data/-/style-data-1.1.2.tgz#d9f4a802ecb7643316560d364c4b5afa3935a89d"
   dependencies:
     cheerio "^0.19.0"
     extend "^3.0.0"
-    mediaquery-text Daylon/mediaquery-text
+    mediaquery-text "^1.0.0"
     object.pick "^1.1.1"
 
 style-search@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
+
+style-selector@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/style-selector/-/style-selector-2.0.1.tgz#6c257f5b2140ae18435e9db15d424e4ef63e446c"
+  dependencies:
+    slick "^1.12.1"
 
 stylehacks@^2.3.2:
   version "2.3.2"
