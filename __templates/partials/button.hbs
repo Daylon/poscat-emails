@@ -2,26 +2,11 @@
 {{#if label}}
 <center class="cta-container">
     <div class="cta-container-exterior">
-{{#wrapInIEConditional}}
-<v:rect
-	class="vml-get-cta-block-size"
-	xmlns:v="urn:schemas-microsoft-com:vml"
-	xmlns:w="urn:schemas-microsoft-com:office:word"
-	href="\{{ctaHref}}"
-	fill="t"
->
-	<v:fill class="vml-get-cta-block-size-fill" />
-	<w:anchorlock/>
-	<center class="cta-link-label vml-cta-link-label">
-		{{label}}
-	</center>
-</v:rect>
-{{/wrapInIEConditional}}
         <div class="cta-block get-cta-block-size">
             <table class="get-cta-block-size cta-block-table" align="center" cellpadding="0" cellspacing="0">
                 <tbody>
                     <tr>
-                        <td class="cta-button get-cta-block-size" align="center">
+                        <td class="cta-button" align="center">
                             <a class="cta-link-a border-less" href="\{{ctaHref}}" title="Button">
                                 <strong class="cta-link-label">{{label}}</strong>
                             </a>

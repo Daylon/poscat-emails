@@ -125,6 +125,8 @@ $palette: ();
 @mixin make-cta( $target: 'get-cta-block-size', $cta-style-background: get-color(), $cta-style-border-color:  get-color(), $cta-style-color:  get-color() ){
   .#{$target}{
     background-color: $cta-style-background;
+    border: 1px solid $cta-style-border-color;
+    border-collapse: initial;
   }
 
   .vml-#{$target}{
@@ -133,10 +135,6 @@ $palette: ();
     & > v, &-fill{
       color: $cta-style-background;
     }
-  }
-
-  .cta-block{
-    border: 1px solid $cta-style-border-color;
   }
 
   .cta-link{
