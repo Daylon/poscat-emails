@@ -446,7 +446,9 @@ MISC MIXINS
   .#{$target},
   .vml-#{$target} {
     width: $width;
+    max-width: 300px;
     height: $height;
+
   }
 
   .vml-#{$target} {
@@ -854,12 +856,12 @@ a.link{
 }
 
 $cta-width: 200px;
-$moreui-width: 300px;
+$moreui-width: 100%;
 $cta-height: 40px;
 $cta-border-radius: floor( $cta-height / 2 );
 
 @include cta-border-radius( 'get-cta-block-size', $cta-width, $cta-height, $cta-border-radius );
-@include cta-border-radius( 'cta-moreui', $moreui-width, $cta-height, $cta-border-radius );
+@include cta-border-radius( 'cta-moreui', $moreui-width, 'auto', $cta-border-radius );
 
 .get-cta-block-size,
 .cta-link-a,
