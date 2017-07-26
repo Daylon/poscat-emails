@@ -5,21 +5,6 @@
 {{#if label}}
 <center class="cta-container">
   <div class="cta-container-exterior">
-		{{#wrapInIEConditional}}
-		<v:rect
-			class="vml-cta-moreui"
-			xmlns:v="urn:schemas-microsoft-com:vml"
-			xmlns:w="urn:schemas-microsoft-com:office:word"
-			href="{{link}}"
-			fill="t"
-		>
-			<v:fill class="vml-cta-moreui-fill" />
-			<w:anchorlock/>
-			<center class="cta-link-label vml-cta-link-label">
-				{{label}}
-			</center>
-		</v:rect>
-		{{/wrapInIEConditional}}
 			<!-- cta-block -->
       <div class="cta-block cta-moreui">
           <table class="cta-moreui cta-block-table" align="center" cellpadding="0" cellspacing="0">
@@ -36,9 +21,6 @@
 															src="\{{urlAssets}}/bt-icon-{{what}}@3x{{#if isDark}}--dark{{/if}}.png"
 														/>
                               <span class="cta-link-label is-lighter">{{label}}</span>
-															<!--<div class="moreui label">
-																{{label}}
-															</div>-->
                           </a>
                       </td>
                   </tr>
