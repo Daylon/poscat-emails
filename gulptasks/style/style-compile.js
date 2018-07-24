@@ -9,8 +9,7 @@ const GULP = require('gulp'),
 	AUTOPREFIXER = require('gulp-autoprefixer'),
 	CSSO = require('gulp-csso'),
 	PURIFY = require('gulp-purifycss'),
-	PATHS = require('../core/core-paths'),
-	ON_ERROR = require('../core/core-errors')
+	PATHS = require('../core/core-paths')
 
 let lintOptionsSass = {
 	failAfterError: false,

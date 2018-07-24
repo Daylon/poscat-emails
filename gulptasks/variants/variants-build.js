@@ -6,8 +6,7 @@ const GULP = require('gulp'),
 	HTML_CLEAN = require('gulp-htmlclean'),
 	HTML_MIN = require('gulp-htmlmin'),
 	RENAME = require('gulp-rename'),
-	PATHS = require('../core/core-paths'),
-	ON_ERROR = require('../core/core-errors')
+	PATHS = require('../core/core-paths')
 
 let buildVariant = function() {
 	console.log(

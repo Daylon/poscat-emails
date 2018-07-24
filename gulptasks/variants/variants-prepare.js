@@ -5,8 +5,7 @@ const GULP = require('gulp'),
 	RENAME = require('gulp-rename'),
 	HANDLEBARS = require('gulp-compile-handlebars'),
 	PATHS = require('../core/core-paths'),
-	TEMPLATES = require('../core/core-templates'),
-	ON_ERROR = require('../core/core-errors')
+	TEMPLATES = require('../core/core-templates')
 
 const FILES_TO_PARSE = [
 	`!${PATHS.dir.variants.source}/${PATHS.dir.variants.textPrefix}*${PATHS.file
