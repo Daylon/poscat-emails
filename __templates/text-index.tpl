@@ -13,11 +13,6 @@
 👉	\{{callToAction}}:
 		\{{ctaHref}}
 \{{/unless}}
-{{#if _d.hasPrefooter}}
-―
-		\{{{prefooterMessage}}}{{#if _d.isPrefooterALink}}:
-		\{{prefooterLink}}{{/if}}
-{{/if}}
 {{#if _d.hasExtensiveUI}}
 ―
 📦	\{{rhythm.next}} — \{{rhythm.editlabel}}:
