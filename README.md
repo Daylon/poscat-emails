@@ -1,4 +1,6 @@
 # gulp-mjml-hbs-pipeline
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Daylon/poscat-emails.svg?token=1560a645fdaf0e91e6e408a1122061a2027b25f3459e9d490306f0f47eb83ac9&ts=1500882263987)](https://greenkeeper.io/)
 Gulp pipeline example dedicated to build HTML emails.
 
 ## Usage
