@@ -5,7 +5,7 @@
 Gulp pipeline for Poscat email-based messaging. Manage themes and layout; uses MJML and prepares templates for production.
 Based on [HBS/MJML seed](https://github.com/Daylon/hbs-mjml-seed).
 
-
+![Output examples for Poscat Emails](https://github.com/Daylon/poscat-emails/blob/master/poscat-emails%401x.png)
 
 ## Usage
 
