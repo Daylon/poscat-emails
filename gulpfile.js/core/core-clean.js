@@ -18,6 +18,4 @@ let cleanUp = function() {
 	)
 }
 
-GULP.task('core-clean', cleanUp)
-
-// module.exports = [ 'core']
+exports.CORE_CLEAN = cleanUp

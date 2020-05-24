@@ -26,4 +26,4 @@ const PATHS = {
 	}
 }
 
-module.exports = PATHS
+exports.PATHS = PATHS

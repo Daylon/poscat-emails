@@ -75,4 +75,4 @@ const MJML_DICTIONARY = {
 	'mj-spacer': ['height']
 }
 
-module.exports = MJML_DICTIONARY
+exports.MJML_DICTIONARY = MJML_DICTIONARY
