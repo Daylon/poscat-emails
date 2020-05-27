@@ -2,7 +2,7 @@
 
 const GULP = require('gulp'),
 	DEL = require('del'),
-	PATHS = require('./core-paths')
+	{ PATHS } = require('./core-paths')
 
 let cleanUp = function() {
 	console.log('\n\u001b[38;5;202mDeleting…\u001b[0m')

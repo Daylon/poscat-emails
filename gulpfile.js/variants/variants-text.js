@@ -1,14 +1,13 @@
 'use strict'
 
-const GULP = require('gulp'),
-	EVENT_STREAM = require('event-stream'),
-	IGNORE = require('gulp-ignore'),
+const { src, dest } = require('gulp'),
+	//IGNORE = require('gulp-ignore'),
 	RENAME = require('gulp-rename'),
-	HANDLEBARS = require('gulp-compile-handlebars'),
+	HANDLEBARS = require('gulp-hb'),
 	PATHS = require('../core/core-paths'),
-	TEMPLATES = require('../core/core-templates')
+	{ TEMPLATES } = require('../core/core-templates')
 
-let variantsText = function() {
+async function variantsText() {
 	let textVariants = [],
 		tplOptions = {
 			ignorePartials: true,
@@ -16,9 +15,8 @@ let variantsText = function() {
 			helpers: {}
 		},
 		renderTextEntry = function(_textEntry) {
-			return GULP.src(
-				`${PATHS.dir.variants.source}/${PATHS.dir.variants.textPrefix}*${PATHS
-					.file.template}`
+			return src(
+				`${PATHS.dir.variants.source}/${PATHS.dir.variants.textPrefix}*${PATHS.file.template}`
 			)
 				.pipe(IGNORE(() => _textEntry.isDark))
 				.pipe(HANDLEBARS(_textEntry, tplOptions))
@@ -29,18 +27,17 @@ let variantsText = function() {
 						extname: PATHS.file.text
 					})
 				)
+				.pipe(dest(`${PATHS.dir.variants.dist}`))
 		}
 
 	console.log(
 		'\n\u001b[38;5;120;1m> TPL \u001b[0m\u001b[38;5;115m Text versions…\u001b[0m'
 	)
 
-	textVariants = TEMPLATES.data.map(renderTextEntry)
-	EVENT_STREAM.merge
+	await TEMPLATES.data.map(renderTextEntry)
+	/*EVENT_STREAM.merge
 		.apply(null, textVariants)
-		.pipe(GULP.dest(`${PATHS.dir.variants.dist}`))
+		.pipe(dest(`${PATHS.dir.variants.dist}`))*/
 }
 
-GULP.task('variants-text', variantsText)
-
-module.exports = variantsText
+exports.VARIANTS_TEXT = variantsText

@@ -110,4 +110,4 @@ let templates = function() {
 	}
 }
 
-exports.CORE_TEMPLATE = templates()
+exports.TEMPLATES = templates()

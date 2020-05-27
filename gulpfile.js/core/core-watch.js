@@ -1,7 +1,7 @@
 'use strict'
 
 const { parallel, watch } = require('gulp'),
-	PATHS = require('./core-paths'),
+	{ PATHS } = require('./core-paths'),
 	FILES_FOR_TEXT_VERSIONS = [
 		`${PATHS.dir.variants.source}**/${PATHS.dir.variants.textPrefix}*${PATHS.file.template}`
 	],
