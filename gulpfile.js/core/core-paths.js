@@ -5,7 +5,7 @@ const PATHS = {
 		base: './',
 		variants: {
 			source: './__templates/',
-			partials: './__templates/partials/',
+			partials: './__templates/partials/**/*.hbs',
 			variants: './__templates/variants/',
 			dist: '../views/emailing/',
 			textPrefix: 'text-'

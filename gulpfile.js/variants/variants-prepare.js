@@ -7,24 +7,23 @@ const { src, dest } = require('gulp'),
 	{ TEMPLATES } = require('../core/core-templates')
 
 const FILES_TO_PARSE = [
-	`!${PATHS.dir.variants.source}/${PATHS.dir.variants.textPrefix}*${PATHS.file.template}`,
-	`${PATHS.dir.variants.source}/*${PATHS.file.template}`
+	`${PATHS.dir.variants.source}/*${PATHS.file.template}`,
+	`!${PATHS.dir.variants.source}/${PATHS.dir.variants.textPrefix}*${PATHS.file.template}`
 ]
 
 async function prepareVariants() {
 	let variants,
 		wrapInIEConditional = options =>
 			options.fn ? `<!--[if mso]>${options.fn()}<![endif]-->` : options,
-		tplOptions = {
-			ignorePartials: true,
-			batch: [`${PATHS.dir.variants.partials}`],
-			helpers: { wrapInIEConditional }
-		},
 		renderEntry = function(_entry) {
 			console.log(`\trendering ${_entry.name}…`)
 
 			return src(FILES_TO_PARSE)
-				.pipe(HANDLEBARS(_entry, tplOptions))
+				.pipe(
+					HANDLEBARS()
+						.partials(`${PATHS.dir.variants.partials}`)
+						.data(_entry)
+				)
 				.pipe(
 					RENAME({
 						prefix: 'email-',

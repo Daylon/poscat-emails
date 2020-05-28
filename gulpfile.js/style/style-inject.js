@@ -4,7 +4,7 @@ const { src, dest } = require('gulp'),
 	SMOOSHER = require('gulp-smoosher'),
 	INLINE_CSS = require('gulp-inline-css'),
 	MJML_DICTIONARY = require('../core/core-mjml'),
-	PATHS = require('../core/core-paths')
+	{ PATHS } = require('../core/core-paths')
 
 let injectStyleInVariants = function() {
 	console.log(

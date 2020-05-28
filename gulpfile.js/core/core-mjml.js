@@ -7,10 +7,8 @@ const MJML_DICTIONARY = {
 	td: ['valign'],
 	img: ['border', 'width', 'height'],
 	'v\\:rect': ['width', 'height', 'color', 'strokecolor', 'arcsize'],
-	'mj-body, mj-container, mj-section, mj-column, mj-button': [
-		'background-color'
-	],
-	'mj-container': ['width', 'font-size', 'background-color'],
+	'mj-body, mj-body, mj-section, mj-column, mj-button': ['background-color'],
+	'mj-body': ['width', 'font-size', 'background-color'],
 	'mj-section': [
 		'full-width',
 		'background-color',
