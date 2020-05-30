@@ -1,7 +1,5 @@
-<mjml>
-<mj-head>
-	<mj-title>\{{#if subject}}\{{subject}}\{{else}}Poscat\{{/if}}</mj-title>
-</mj-head>
+<mjml version="3.3.3">
+
 <mj-body class="mj-container {{theme}} {{#if isDark}}{{theme}}--dark{{/if}}">
 
 

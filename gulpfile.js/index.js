@@ -7,15 +7,16 @@ const { series, parallel } = require('gulp'),
 	{ STYLE_INJECT } = require('./style/style-inject')
 
 exports.default = series(
-	CORE_CLEAN,
-	VARIANTS_PREPARE,
-	STYLE_COMPILE,
-	STYLE_INJECT,
-	VARIANTS_BUILD,
-	VARIANTS_TEXT
+	CORE_CLEAN, // OK
+	VARIANTS_PREPARE, // OK
+	STYLE_COMPILE, // OK
+	STYLE_INJECT, // OK
+	VARIANTS_BUILD, // does it do ANYTHING?
+	VARIANTS_TEXT // seems ok
 )
 
 /*
+https://github.com/mjmlio/mjml/blob/master/packages/mjml-cli/README.md#minify-and-beautify-the-output-html
 core-watch
 core-clean',
 'core-watch-notification',
